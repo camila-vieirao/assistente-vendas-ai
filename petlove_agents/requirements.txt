@@ -1,0 +1,9 @@
+pymongo==4.13.2
+chromadb==1.0.15
+numpy==2.3.1
+transformers==4.53.3
+torch==2.7.1
+einops==0.8.1
+sentence-transformers==5.0.0
+fastapi==0.116.1
+crewai==0.150.0
