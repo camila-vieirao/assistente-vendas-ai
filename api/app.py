@@ -47,8 +47,8 @@ def chat(user_input: UserInput):
 
         return {
             "conversation_id": user_input.conversation_id,
-            "response": result_dict.get("final_output", str(result)),
-            "history": conversation.messages
+            "response": result_dict.get("final_output", str(result))
+            #"history": conversation.messages
         }
 
     except Exception as e:
