@@ -3,7 +3,8 @@ from typing import Type
 from pydantic import BaseModel, Field
 from chromadb import PersistentClient 
 from sentence_transformers import SentenceTransformer
-
+import os
+from petlove_agents.kb_utils.embeddings.chroma_config import get_chroma_client
 
 class ChromaSearchInput(BaseModel):
     query: str = Field(
@@ -50,7 +51,7 @@ class ChromaSearchTool(BaseTool):
             if isinstance(top, dict):
                 top = int(top.get("description") or top.get("value") or 2)
 
-            chroma_client = PersistentClient(path="chroma_db/")
+            chroma_client = get_chroma_client()
             collection = chroma_client.get_collection(name="product_embeddings")
 
             #vetorizacao da query
