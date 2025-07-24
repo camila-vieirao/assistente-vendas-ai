@@ -1,77 +1,61 @@
-## 🐶 Assistente de Vendas com IA - PetLove
+# 🐶 Assistente de Vendas Petlove (AI)
 
-Um projeto de inteligência artificial baseado em RAG (Retrieval-Augmented Generation) que ajuda clientes a encontrar produtos de pets respondendo perguntas com base em uma base de dados real.
+Este projeto é uma API que recomenda produtos com base em uma conversa, utilizando modelos de linguagem e um banco vetorial.
 
-### 🧠 Tecnologias
+## 🚀 Como rodar com Docker
 
-* 🐍 Python 3.13.3
-* 💾 ChromaDB (vetores)
-* 📦 MongoDB (documentos)
-* 🔤 Jina Embeddings v3 (modelo de vetorização)
-* 🔤 Meta-Llama-3.1-8B-Instruct (modelo de nlp)
-* 🤖 CrewAI (orquestração de agentes)
-
----
-
-## ⚙️ Pré-requisitos
-
-* Python 3.13.3
-* MongoDB rodando localmente (padrão: `mongodb://localhost:27017`)
-
----
-
-## 📥 Instalação
-
-1. Clone o repositório:
+### 1. Clone o projeto
 
 ```bash
 git clone https://github.com/camila-vieirao/assistente-vendas-ai.git
 cd assistente-vendas-ai
-cd petlove_agents
-```
+````
 
-2. Dependencias:
+### 2. Configure o ambiente
 
-```bash
-crewai install
-```
----
+Crie um arquivo `.env` com base no modelo `.env.example`.
 
-## 🧪 Configuração e Ingestão dos Dados
+Edite o `.env` e preencha com seu `HF_TOKEN`.
+> Manter "`OPENAI_API_KEY=dummy`", por conta de um bug do crewai.
 
-1. Certifique-se de que o MongoDB está rodando localmente.
-
-2. Insira os dados no MongoDB:
+### 3. Rode tudo com Docker Compose
 
 ```bash
-python src/database/database.py
+docker-compose up --build
 ```
 
-Esse script faz:
+Esse comando irá:
 
-* Carregamento do arquivo `src/database/products.json`.
-* Armazenamento dos produtos no MongoDB.
-
-Após inserir os dados no MongoDB:
-
-```bash
-python src/embeddings/ingest_products.py
-```
-
-Esse script faz:
-
-* Vetorização com `jina-embeddings-v3`.
-* Armazenamento dos vetores no banco Chroma local (`chroma_db/`).
+* Baixar e subir o MongoDB
+* Instalar as dependências da API
+* Popular o banco de dados
+* Inserir os dados no Chroma
+* Subir a API em `http://localhost:8000`
 
 ---
 
-## 💬 Como rodar o assistente (em breve)
+## 🧪 Como testar
 
-O agente será criado com CrewAI e ficará em `src/crewai/petlove-agents/`.
+Abra: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-```bash
-python src/crewai/petlove-agents/main.py
+Use o endpoint `/api/question-and-answer` com o seguinte corpo:
+
+```json
+{
+  "message": "eu gostaria de comprar brinquedo para cachorro",
+  "role": "user",
+  "conversation_id": "<id>"
+}
 ```
 
-*(Ainda em desenvolvimento!)*
+---
 
+## 🛠 Tecnologias
+
+* 🧠 LLM (HuggingFace)
+* 🧬 MongoDB
+* ⚡ FastAPI
+* 🧭 ChromaDB
+* 🐳 Docker
+
+---
