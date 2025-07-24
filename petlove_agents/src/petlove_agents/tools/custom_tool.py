@@ -61,7 +61,7 @@ class ChromaSearchTool(BaseTool):
                 normalize_embeddings=True
             ) 
 
-            results = collection.query(query_embeddings=[embeddings], n_results=top, include=["documents", "metadatas", "distances"])
+            results = collection.query(query_embeddings=[embeddings], n_results=min(top, 2), include=["documents", "metadatas", "distances"])
 
             formatted_results = []
             for i in range(len(results["documents"][0])):

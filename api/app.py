@@ -43,11 +43,12 @@ def chat(user_input: UserInput):
         bot = PetloveAgents()
         result = bot.crew().kickoff(inputs={"user_input": user_input.message})
         conversation.messages.append({"role": "assistant", "content": result})
+        result_dict = result.to_dict()
 
         return {
             "conversation_id": user_input.conversation_id,
-            "response": result
-            #"history": conversation.messages
+            "response": result_dict.get("final_output", str(result)),
+            "history": conversation.messages
         }
 
     except Exception as e:
