@@ -1,7 +1,10 @@
 from pymongo import MongoClient
 import json
-from chroma_config import get_or_create_collection
-from vectorizer import embed_texts
+from .chroma_config import get_or_create_collection
+from .vectorizer import embed_texts
+from petlove_agents.kb_utils.database.database import populate_products_if_needed
+
+populate_products_if_needed()
 
 mongo_client = MongoClient("mongodb://localhost:27017/")
 db = mongo_client["petlove_ai"]

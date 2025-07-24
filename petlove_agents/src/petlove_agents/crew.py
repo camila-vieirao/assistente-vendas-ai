@@ -27,16 +27,16 @@ class PetloveAgents():
     def consultor_vetorial(self) -> Agent:
         return Agent(
             config=self.agents_config['consultor_vetorial'],
-            llm=hf_llm,
-            verbose=True
+            llm=hf_llm
+            # verbose=True
         )
 
     @agent
     def assistente_vendas(self) -> Agent:
         return Agent(
             config=self.agents_config['assistente_vendas'],
-            llm=hf_llm,
-            verbose=True
+            llm=hf_llm
+            # verbose=True
         )
 
     @task
@@ -59,6 +59,6 @@ class PetloveAgents():
             agents=self.agents,
             tasks=self.tasks,
             process=Process.sequential,
-            verbose=True,
+            #verbose=True,
             chat_llm=hf_llm
         )
