@@ -2,7 +2,7 @@ import os
 from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
-from petlove_agents.tools.custom_tool import ChromaSearchTool
+from .tools.custom_tool import ChromaSearchTool
 from typing import List
 from dotenv import load_dotenv
 from openai import OpenAI

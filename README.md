@@ -27,22 +27,14 @@ Um projeto de inteligência artificial baseado em RAG (Retrieval-Augmented Gener
 ```bash
 git clone https://github.com/camila-vieirao/assistente-vendas-ai.git
 cd assistente-vendas-ai
+cd petlove_agents
 ```
 
-2. Crie o ambiente virtual:
+2. Dependencias:
 
 ```bash
-python -m venv env
-source env/bin/activate  # Linux/Mac
-env\Scripts\activate     # Windows
+crewai install
 ```
-
-3. Instale as dependências:
-
-```bash
-pip install -r requirements.txt
-```
-
 ---
 
 ## 🧪 Configuração e Ingestão dos Dados

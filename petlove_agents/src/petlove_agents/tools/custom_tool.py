@@ -12,7 +12,7 @@ class ChromaSearchInput(BaseModel):
     )
 
     top: int = Field(
-        default=4, 
+        default=2, 
         description="Quantidade de resultados mais relevantes que devem ser retornados. Use valores menores para respostas objetivas, maiores para consultas mais amplas."
     )
 
@@ -20,12 +20,12 @@ class ChromaSearchInput(BaseModel):
     @classmethod
     def validate_input(cls, values):
         query = values.get("query")
-        top = values.get("top", 4)
+        top = values.get("top", 2)
 
         if isinstance(query, dict):
             query = query.get("description") or query.get("value") or str(query)
         if isinstance(top, dict):
-            top = int(top.get("description") or top.get("value") or 4)
+            top = int(top.get("description") or top.get("value") or 2)
 
         values["query"] = query
         values["top"] = top
