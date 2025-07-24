@@ -1,0 +1,29 @@
+recuperar_contexto:
+  description: >
+    Verifique se é necessário recuperar contexto para responder a mensagem do usuário.
+    Se não for necessário, então apenas finalize a resposta dizendo que não é necessário contexto.
+    Caso seja necessario, então reformule a mensagem do usuário em uma standalone question, que deve ser objetiva e sem ambiguidade, adicionando detalhes sobre o animal e raça caso identificados para melhorar a busca.\n
+    Os dados dos produtos vetorizados são esses (utilize na formulacao da standalone question): id, name, description, category, brand, price, discount_price, rating, stock, image_url, keywords, nutritional_info, proteína, gordura, fibras, umidade, life_stage, weight_options, review_count, link. \n
+    Mensagem do usuário: '{user_input}'.\n
+    Em seguida, use essa frase para consultar o banco e recuperar os trechos mais relevantes disponíveis.
+    Se a query não trouxe resultados relevantes, reformule a frase e tente novamente.
+    RECUPERE O CONTEXTO NO MÁXIMO ATÉ 3 VEZES. E NUNCA TENTE REUTILIZAR O MESMO INPUT MAIS DE UMA VEZ.
+    
+  expected_output: >
+    Pelo menos 2 Resultados recuperados do banco de dados vetorial exatamente como foi retornado,
+    SEM QUALQUER MODIFICAÇÃO NOS RESULTADOS E METADADOS.
+    SEMPRE RETORNE O LINK DOS PRODUTOS ENCONTRADOS.
+  agent: consultor_vetorial
+
+responder_cliente:
+  description: >
+    Use o contexto fornecido para responder a seguinte mensagem do usuário de forma clara e precisa: '{user_input}'. \n
+    Caso não haja dados suficientes no contexto, informe que não foi possível econtrar o produto ideal, mas dê outras sugestões.
+    Responda apenas com base no conteúdo do contexto, mas nunca mencione ele. NUNCA INVENTE PRODUTOS.
+    Sempre retorne o link do produto.
+    Caso o cliente envie uma saudação ou agradecimentos/despedidas, apenas retribua e fique a disposição para ajudá-lo caso ele precise de mais apoio.
+  expected_output: >
+    Uma resposta direta e clara para a mensagem do usuário, sem incluir informações que não foram requisitadas pelo cliente.
+    fundamentada somente no contexto apresentado e formatada em markdown.    
+    Lembre-se que você está conversando com o cliente que está utilizando a plataforma e-commerce da PetLove, portanto direcione a mensagem como se voce fosse um assistente de compras conversando diretamente com ele. Converse com ele chamando-o em segunda pessoa.
+  agent: assistente_vendas
