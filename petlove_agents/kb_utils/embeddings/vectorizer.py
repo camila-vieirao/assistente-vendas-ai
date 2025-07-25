@@ -1,6 +1,6 @@
 from sentence_transformers import SentenceTransformer
 
-model = SentenceTransformer("jinaai/jina-embeddings-v3", trust_remote_code=True)
+model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", trust_remote_code=True)
 
 def embed_texts(texts: list[str]) -> list[list[float]]:
     if not texts:

@@ -13,7 +13,7 @@ class ChromaSearchInput(BaseModel):
     )
 
     top: int = Field(
-        default=2, 
+        default=3, 
         description="Quantidade de resultados mais relevantes que devem ser retornados. Use valores menores para respostas objetivas, maiores para consultas mais amplas."
     )
 
@@ -21,12 +21,12 @@ class ChromaSearchInput(BaseModel):
     @classmethod
     def validate_input(cls, values):
         query = values.get("query")
-        top = values.get("top", 2)
+        top = values.get("top", 3)
 
         if isinstance(query, dict):
             query = query.get("description") or query.get("value") or str(query)
         if isinstance(top, dict):
-            top = int(top.get("description") or top.get("value") or 2)
+            top = int(top.get("description") or top.get("value") or 3)
 
         values["query"] = query
         values["top"] = top
@@ -44,24 +44,24 @@ class ChromaSearchTool(BaseTool):
     )
     args_schema: Type[BaseModel] = ChromaSearchInput
 
-    def _run(self, query: str, top: int = 2, **kwargs) -> str:
+    def _run(self, query: str, top: int = 3, **kwargs) -> str:
         try:
             if isinstance(query, dict):
                 query = query.get("description") or query.get("value") or str(query)
             if isinstance(top, dict):
-                top = int(top.get("description") or top.get("value") or 2)
+                top = int(top.get("description") or top.get("value") or 3)
 
             chroma_client = get_chroma_client()
             collection = chroma_client.get_collection(name="product_embeddings")
 
             #vetorizacao da query
-            model = SentenceTransformer("jinaai/jina-embeddings-v3", trust_remote_code=True)
+            model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", trust_remote_code=True)
             embeddings = model.encode(
                 query,
                 normalize_embeddings=True
             ) 
 
-            results = collection.query(query_embeddings=[embeddings], n_results=min(top, 2), include=["documents", "metadatas", "distances"])
+            results = collection.query(query_embeddings=[embeddings], n_results=min(top, 3), include=["documents", "metadatas", "distances"])
 
             formatted_results = []
             for i in range(len(results["documents"][0])):

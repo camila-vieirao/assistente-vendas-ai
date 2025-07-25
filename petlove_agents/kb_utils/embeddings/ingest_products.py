@@ -29,7 +29,7 @@ embeddings = embed_texts(texts)
 
 # inserir no chroma
 collection = get_or_create_collection()
-
+collection.delete(ids=ids)
 collection.add(
     documents=texts,
     embeddings=embeddings,

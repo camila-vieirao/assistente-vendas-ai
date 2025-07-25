@@ -1,4 +1,27 @@
 [
+    {
+    "id": "12345",
+    "name": "Ração Golden Retriever 20kg",
+    "description": "Ração seca para cães adultos da raça Golden Retriever. Opção econômica.",
+    "category": "Rações para Cães",
+    "brand": "Royal Dog",
+    "price": 89.90,
+    "discount_price": 59.90,
+    "rating": 3.8,
+    "review_count": 300,
+    "stock": 20,
+    "image_url": "https://linkdaimagem.com/royal-dog.jpg",
+    "keywords": ["ração", "golden retriever", "cachorro", "pele", "articulações", "royal dog"],
+    "nutritional_info": {
+      "proteína": "26%",
+      "gordura": "14%",
+      "fibras": "3.5%"
+    },
+    "breed_recommendation": ["Golden Retriever"],
+    "life_stage": "adulto",
+    "weight_options": ["2kg", "7.5kg", "15kg"],
+    "product_url": "https://www.petlove.com.br/produto/12345/racao-royal-canin-golden-retriever-15kg"
+  },
   {
     "id": "12345",
     "name": "Ração Royal Canin Golden Retriever 15kg",

@@ -19,6 +19,7 @@ Edite o `.env` e preencha com seu `HF_TOKEN`.
 > Manter "`OPENAI_API_KEY=dummy`", por conta de um bug do crewai.
 
 ### 3. Rode tudo com Docker Compose
+- inicie a engine do Docker através do Docker Desktop, e após isso rode o seguinte comando:
 
 ```bash
 docker-compose up --build

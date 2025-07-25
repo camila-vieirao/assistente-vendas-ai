@@ -9,10 +9,9 @@ from openai import OpenAI
 
 load_dotenv()
 
-hf_llm = LLM(
+groq_llm = LLM(
     model=os.getenv("MODEL"),
-    api_key=os.getenv("HF_TOKEN"),
-    provider="huggingface"
+    api_key=os.getenv("GROQ_API_KEY")
 )
 
 @CrewBase
@@ -27,16 +26,16 @@ class PetloveAgents():
     def consultor_vetorial(self) -> Agent:
         return Agent(
             config=self.agents_config['consultor_vetorial'],
-            llm=hf_llm
-            # verbose=True
+            llm=groq_llm,
+            verbose=True
         )
 
     @agent
     def assistente_vendas(self) -> Agent:
         return Agent(
             config=self.agents_config['assistente_vendas'],
-            llm=hf_llm
-            # verbose=True
+            llm=groq_llm,
+            verbose=True
         )
 
     @task
@@ -59,6 +58,6 @@ class PetloveAgents():
             agents=self.agents,
             tasks=self.tasks,
             process=Process.sequential,
-            #verbose=True,
-            chat_llm=hf_llm
+            verbose=True,
+            chat_llm=groq_llm
         )
