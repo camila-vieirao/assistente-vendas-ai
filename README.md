@@ -15,7 +15,7 @@ cd assistente-vendas-ai
 
 Crie um arquivo `.env` com base no modelo `.env.example`.
 
-Edite o `.env` e preencha com seu `HF_TOKEN`.
+Edite o `.env` e preencha com seu `GROQ_API_KEY`.
 > Manter "`OPENAI_API_KEY=dummy`", por conta de um bug do crewai.
 
 ### 3. Rode tudo com Docker Compose
@@ -54,10 +54,15 @@ Use o endpoint `/api/question-and-answer` com o seguinte corpo:
 
 ## 🛠 Tecnologias
 
-* 🧠 LLM (HuggingFace)
+* 🧠 LLM (Groq)
+* 🔢 Embeddings (HuggingFace)
 * 🧬 MongoDB
 * ⚡ FastAPI
 * 🧭 ChromaDB
 * 🐳 Docker
 
 ---
+
+## Demonstração
+
+![](steps.gif)
