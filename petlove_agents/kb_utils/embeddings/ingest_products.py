@@ -6,7 +6,7 @@ from petlove_agents.kb_utils.database.database import populate_products_if_neede
 
 populate_products_if_needed()
 
-mongo_client = MongoClient("mongodb://localhost:27017/")
+mongo_client = MongoClient("mongo", 27017)
 db = mongo_client["petlove_ai"]
 products = db["products"].find()
 

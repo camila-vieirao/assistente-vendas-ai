@@ -7,12 +7,12 @@ recuperar_contexto:
     Use apenas dados presentes na mensagem original (animal, raça, tipo de produto).
     Corrija erros gramaticais, mas não invente nada novo.
     Se a mensagem já estiver clara, apenas retorne ela sem mudanças.
-    Traga os produtos recuperados exatamente como retornados, sem alterações.
+    Traga os produtos recuperados exatamente como retornados, sem alterações, incluindo informações úteis, como preço e descrição.
     Caso não encontre produtos relevantes, diga: Infelizmente, não encontramos nenhum produto ideal para sua necessidade no momento. Você pode me dar mais detalhes para que eu possa buscar melhor?
 
     
   expected_output: >
-    Pelo menos 2 Resultados recuperados do banco de dados vetorial exatamente como foi retornado,
+    Pelo menos 2 Resultados recuperados do banco de dados vetorial exatamente como foi retornado, com informações úteis sobre o produto.
     Caso o contexto não traga ao menos um produto relevante, a resposta deve ser: Infelizmente, não encontramos nenhum produto ideal para sua necessidade no momento. Você pode me dar mais detalhes para que eu possa buscar melhor?
     SEM QUALQUER MODIFICAÇÃO NOS RESULTADOS E METADADOS.
     SEMPRE RETORNE O LINK DOS PRODUTOS ENCONTRADOS.
@@ -23,7 +23,7 @@ responder_cliente:
     Use o contexto fornecido para responder a seguinte mensagem do usuário de forma clara e precisa: '{user_input}'. \n
     Caso não haja dados suficientes no contexto, informe que não foi possível econtrar o produto ideal, peça mais informações e fique à disposição do cliente.
     Responda apenas com base no conteúdo do contexto, mas nunca mencione ele. NUNCA INVENTE PRODUTOS.
-    Sempre retorne o link do produto.
+    Sempre retorne o link do produto e preço, além de explicar o porque está sugerindo aquele produto.
     Caso o cliente envie uma saudação ou agradecimentos/despedidas, apenas retribua e fique a disposição para ajudá-lo caso ele precise de mais apoio.
   expected_output: >
     Uma resposta direta e clara para a mensagem do usuário, sem incluir informações que não foram requisitadas pelo cliente.

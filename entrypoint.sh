@@ -15,4 +15,3 @@ python -m petlove_agents.kb_utils.embeddings.ingest_products
 # Iniciar a API
 echo "Iniciando a API..."
 uvicorn api.app:app --host 0.0.0.0 --port 8000
-chmod +x entrypoint.sh

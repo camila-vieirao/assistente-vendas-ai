@@ -3,7 +3,7 @@ import json
 import os
 
 def populate_products_if_needed():
-    client = MongoClient("mongodb://localhost:27017/")
+    client = MongoClient("mongo", 27017)
     db = client["petlove_ai"]
     collection = db["products"]
 
