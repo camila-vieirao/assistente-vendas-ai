@@ -2,6 +2,7 @@ recuperar_contexto:
   description: >
     Reformule a mensagem do usuário em uma pergunta objetiva e específica para buscar produtos relevantes de acordo com o pedido do cliente no banco vetorial. \n
     mensagem do cliente: '{user_input}'
+    historico de mensagens: '{chat_history}'
     Utilize dados como animal e raça, se disponíveis, para aumentar a precisão.
     Realize no máximo 2 tentativas de reformulação, usando perguntas diferentes.
     Use apenas dados presentes na mensagem original (animal, raça, tipo de produto).
@@ -21,6 +22,7 @@ recuperar_contexto:
 responder_cliente:
   description: >
     Use o contexto fornecido para responder a seguinte mensagem do usuário de forma clara e precisa: '{user_input}'. \n
+    historico de mensagens: '{chat_history}'
     Caso não haja dados suficientes no contexto, informe que não foi possível econtrar o produto ideal, peça mais informações e fique à disposição do cliente.
     Responda apenas com base no conteúdo do contexto, mas nunca mencione ele. NUNCA UTILIZE CONHECIMENTO GERAL PARA RECOMENDAR PRODUTOS. OS PRODUTOS SUGERIDOS DEVEM SEMPRE ESTAR NO CONTEXTO.
     Sempre retorne o link do produto e preço, além de explicar o porque está sugerindo aquele produto.

@@ -39,13 +39,14 @@ def chat(user_input: UserInput):
     try:
 
         bot = PetloveAgents()
-        result = bot.crew().kickoff(inputs={"user_input": user_input.message})
-        conversation.messages.append({"role": "assistant", "content": result})
-        result_dict = result.to_dict()
+        result = bot.crew().kickoff(inputs={"user_input": user_input.message, "chat_history": conversation.messages})
+        
+        assistant_message = result.to_dict().get("final_output", str(result))
+        conversation.messages.append({"role": "assistant", "content": assistant_message})
 
         return {
             "conversation_id": user_input.conversation_id,
-            "response": result_dict.get("final_output", str(result))
+            "response": assistant_message
             #"history": conversation.messages
         }
 
