@@ -1,4 +1,4 @@
-# 🐶 Assistente de Vendas Petlove (AI)
+# 🐶 Assistente de Vendas Petshop (AI)
 
 Este projeto é uma API que recomenda produtos com base em uma conversa, utilizando modelos de linguagem e um banco vetorial.
 
